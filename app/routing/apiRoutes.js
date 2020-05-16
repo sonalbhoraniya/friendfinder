@@ -16,24 +16,16 @@ module.exports = function (app) {
             for (var j = 0; j < 10; j++) {
                 var diff = Math.abs(friends[i].scores[j] - newFriend.scores[j]);
                 diffs.push(diff)
-                // console.log(diffs)
             }
             var sum = diffs.reduce(function (a, b) {
                 return a + b;
             }, 0);
             diffs = []
             sumDiffs.push(sum);
-            console.log("array of diffs: "+sumDiffs);
         }
-        console.log(typeof sumDiffs[0] )
-        // console.log("Below should be 3")
-        // console.log("math min sumDiffs: ")
-        // console.log(Math.min(...sumDiffs))
+        
         var friendIndex = sumDiffs.indexOf(Math.min(...sumDiffs))
-        // console.log(bestFriendIndex)
         var chosenFriend = friends[friendIndex]
-        console.log(chosenFriend)
-        // res.json(newBestie)
         res.json(chosenFriend)
 
     });
